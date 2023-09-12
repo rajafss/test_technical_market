@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_view_tree" model="ir.ui.view">
+            <field name="name">products</field>
+            <field name="model">product.log</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="modification_date"/>
+                    <field name="user_id"/>
+                    <field name="fields_ids"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_form" model="ir.ui.view">
+            <field name="name">products form</field>
+            <field name="model">product.log</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="modification_date"/>
+                            <field name="user_id"/>
+                            <field name="fields_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="product_log_action_window">
+            <field name="name">Products Log </field>
+            <field name="res_model">product.log</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  Top menu item  -->
+        <menuitem name="Products Log" id="product_menu_root"/>
+        <!--  menu categories  -->
+        <menuitem name="Configuration" id="product_menu_1" parent="product_menu_root"/>
+        <!--  actions  -->
+        <menuitem name="modifications" id="log_menu_1_list" parent="product_menu_1"
+                  action="product_log_action_window"/>
+    </data>
+</odoo>
